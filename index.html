@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Vlata Shop | Robux & Gear</title>
+    <style>
+        :root { --g: #FFD700; --p: #8A2BE2; --b: #050505; --card: #111; }
+        body { background: var(--b); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; user-select: none; -webkit-touch-callout: none; overflow-x: hidden; }
+        
+        /* هيدر المتجر */
+        header { padding: 20px; border-bottom: 2px solid var(--g); display: flex; justify-content: space-between; align-items: center; background: #0a0a0a; position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .logo { font-size: 24px; font-weight: 900; color: var(--g); text-shadow: 0 0 10px var(--g); }
+        .secure-badge { border: 1px solid #00ff00; color: #00ff00; padding: 6px 12px; border-radius: 50px; font-size: 11px; cursor: pointer; transition: 0.3s; }
+        .secure-badge:active { background: #00ff00; color: #000; }
+
+        /* منطقة الإعلانات */
+        .ad-zone { background: linear-gradient(90deg, #111, var(--p), #111); padding: 10px; text-align: center; font-size: 13px; font-weight: bold; border-bottom: 1px solid #222; }
+
+        /* قائمة المنتجات */
+        .container { padding: 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: var(--card); border: 1px solid #222; border-radius: 15px; padding: 20px; position: relative; transition: 0.3s; }
+        .card.gold-item { border-right: 5px solid var(--g); box-shadow: inset 0 0 15px rgba(255,215,0,0.05); }
+        .card.purple-item { border-right: 5px solid var(--p); }
+        
+        /* الروبوكس والأسعار */
+        .price { display: flex; align-items: center; font-size: 28px; color: var(--g); margin: 15px 0; font-weight: bold; }
+        .rbx-icon { width: 25px; margin-left: 10px; filter: drop-shadow(0 0 5px var(--g)); }
+        
+        .status { font-size: 12px; padding: 4px 10px; border-radius: 5px; position: absolute; top: 15px; left: 15px; font-weight: bold; }
+        .avail { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+        .out { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .most-wanted { background: var(--g); color: #000; }
+
+        button.buy { width: 100%; padding: 16px; background: var(--g); border: none; border-radius: 12px; font-weight: bold; font-size: 18px; color: #000; cursor: pointer; }
+        button:disabled { background: #333; color: #666; cursor: not-allowed; }
+
+        /* شاشة القفل للعيد */
+        #maint-screen { display: none; position: fixed; inset: 0; background: var(--b); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        
+        /* لوحة التحكم */
+        #admin-panel { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; padding: 30px; }
+        .admin-btn { width: 100%; padding: 15px; margin: 10px 0; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div id="maint-screen">
+    <div class="logo" style="font-size: 40px;">VLATA SHOP</div>
+    <h1 style="color: var(--g); margin-top: 20px;">المتجر مغلق حالياً 🔒</h1>
+    <p style="color: var(--p); font-size: 18px; padding: 0 20px;">تجهيزات كبرى للعيد.. انتظرونا بأقوى العروض! 🌙✨</p>
+    <div style="margin-top: 30px; color: #555;">ID: 1269710725560008740</div>
+</div>
+
+<header>
+    <div class="logo" id="admin-trigger">VLATA-V</div>
+    <div class="secure-badge" onclick="alert('اتصال مشفر وآمن تماماً ✅')">موقع آمن 🔒</div>
+</header>
+
+<div class="ad-zone">أقوى أدوات بلوك سبن والتهكير متوفرة الآن بالروبوكس!</div>
+
+<div class="container">
+    <div class="card gold-item">
+        <span class="status most-wanted">الأكثر طلباً 🔥</span>
+        <h3 style="margin:0;">سطل ذهبي (Gold Bucket)</h3>
+        <div class="price">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" class="rbx-icon">
+            15,000
+        </div>
+        <p style="color: #888; font-size: 14px;">الكمية المتوفرة: <span style="color:var(--g)">3 حبات فقط</span></p>
+        <button class="buy">شراء الآن</button>
+    </div>
+
+    <div class="card purple-item">
+        <span class="status avail">جديد ✨</span>
+        <h3 style="margin:0;">ديل برل (Deal Barrel)</h3>
+        <div class="price">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" class="rbx-icon">
+            5,500
+        </div>
+        <p style="color: #888; font-size: 14px;">الحالة: <span style="color:var(--p)">متوفر</span></p>
+        <button class="buy">شراء الآن</button>
+    </div>
+
+    <div class="card purple-item">
+        <span class="status out">غير متوفر</span>
+        <h3 style="margin:0;">Vlata Exploit (أداة تهكير قوية)</h3>
+        <div class="price">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" class="rbx-icon">
+            10,000
+        </div>
+        <button class="buy" style="background:#222; color:#555;" disabled>نفذت الكمية</button>
+    </div>
+</div>
+
+<div id="admin-panel">
+    <h2 style="color: var(--g); border-bottom: 1px solid #333; padding-bottom: 10px;">لوحة المسؤول 👑</h2>
+    <p style="color: #888;">تحكم في حالة المتجر (Vlata Shop):</p>
+    
+    <button class="admin-btn" style="background: #e74c3c; color: #fff;" onclick="setStore(true)">قفل الموقع (وضع العيد) 🔒</button>
+    <button class="admin-btn" style="background: #2ecc71; color: #fff;" onclick="setStore(false)">فتح الموقع للزبائن ✅</button>
+    
+    <div style="margin-top: 40px;">
+        <p style="color: #888;">تغيير الأسعار والكميات قيد التطوير..</p>
+    </div>
+
+    <button onclick="document.getElementById('admin-panel').style.display='none'" style="background:none; border:1px solid #444; color:#fff; width:100%; padding:10px; margin-top:50px; border-radius:10px;">خروج من اللوحة</button>
+</div>
+
+<script>
+    // نظام الأمان والتحكم المخفي
+    let timer;
+    const trigger = document.getElementById('admin-trigger');
+
+    // فتح اللوحة بضغط مطول (3 ثواني) على اسمك
+    trigger.addEventListener('touchstart', () => {
+        timer = setTimeout(() => {
+            let key = prompt("Code:");
+            // التحقق من الكود 8800 (مشفر)
+            if (key === "\x38\x38\x30\x30") {
+                document.getElementById('admin-panel').style.display = 'block';
+            } else {
+                alert("خطأ في الكود 🛡️");
+            }
+        }, 3000);
+    });
+
+    trigger.addEventListener('touchend', () => clearTimeout(timer));
+
+    // حفظ حالة الموقع (قفل/فتح)
+    function setStore(isClosed) {
+        localStorage.setItem('v_store_closed', isClosed ? 'yes' : 'no');
+        alert(isClosed ? "تم قفل المتجر بنجاح" : "تم فتح المتجر بنجاح");
+        location.reload();
+    }
+
+    // فحص الحالة عند كل دخول للموقع
+    window.onload = function() {
+        if (localStorage.getItem('v_store_closed') === 'yes') {
+            document.getElementById('maint-screen').style.display = 'flex';
+        }
+    };
+
+    // منع محاولات السرقة (F12 وتعطيل النسخ)
+    document.onkeydown = function(e) {
+        if(e.keyCode == 123) return false;
+    };
+</script>
+
+</body>
+</html>
